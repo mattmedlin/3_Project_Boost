@@ -725,7 +725,7 @@ MonoBehaviour:
   rcsThrust: 250
   mainThrust: 8
   levelLoadDelay: 2
-  mainEngine: {fileID: 8300000, guid: 658938cb934bb764ab4d8e83f49506dd, type: 3}
+  mainEngine: {fileID: 8300000, guid: 55dece5f964c07b46bf63a1964ffc7f8, type: 3}
   success: {fileID: 8300000, guid: 19fee9c79e51c0d40b4ce0ef020c091a, type: 3}
   death: {fileID: 8300000, guid: 24c97901a0dabb24c8ca8a584f21330a, type: 3}
   mainEngineParticles: {fileID: 4438391032905137629}
