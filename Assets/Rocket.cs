@@ -23,8 +23,7 @@ public class Rocket : MonoBehaviour
 
     bool collisionsDisabled = true;
 
-    enum State { Alive, Dying, Transcending}
-    State state = State.Alive;
+    bool isTransitioning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +36,7 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (state == State.Alive)
+        if (!isTransitioning)
         {
             RespondToThrustInput();
             RespondToRotateInput();
@@ -63,7 +62,7 @@ public class Rocket : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive || !collisionsDisabled) { return; }
+        if (isTransitioning || !collisionsDisabled) { return; }
         switch (collision.gameObject.tag)
         {
             case "Friendly":
@@ -80,7 +79,7 @@ public class Rocket : MonoBehaviour
 
     private void StartDeathSequence()
     {
-        state = State.Dying;
+        isTransitioning = true;
         audioSource.Stop();
         audioSource.PlayOneShot(death);
         deathParticles.Play();
@@ -89,7 +88,7 @@ public class Rocket : MonoBehaviour
 
     private void StartSuccessSequence()
     {
-        state = State.Transcending;
+        isTransitioning = true;
         audioSource.Stop();
         audioSource.PlayOneShot(success);
         successParticles.Play();
